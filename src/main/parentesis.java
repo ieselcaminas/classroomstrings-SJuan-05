@@ -1,7 +1,7 @@
 package main;
 
 public class parentesis {
-    public static int parentizado (String texto){
+    public static boolean parentizado (String texto){
 
         int contador = 0;
 
@@ -12,13 +12,18 @@ public class parentesis {
                 contador++;
 
             } else if (texto.charAt(i) == ')'){
-
+                
                 contador--;
 
+                if (contador < 0){
+
+                    return false;
+                }
+                
             }
         }
 
-        return contador;
+        return contador == 0;
 
     }
 
@@ -27,7 +32,7 @@ public class parentesis {
         String texto = "Esto (es (un ejemplo) (de) una (cadena bien parentizada)";
         int contador = parentizado(texto);
 
-        if (contador == 0){
+        if (contador){
 
             System.out.println("La cadena de caracteres esta bien parentizada");
 
